@@ -2,7 +2,7 @@ import React from 'react';
 
 const Banner = () => {
   return (
-    <section className="mx-auto mt-24 max-w-screen-xl items-center px-4 pb-12 md:px-8 lg:flex">
+    <section className=" mx-auto mt-24 max-w-screen-xl items-center px-4 pb-12 md:px-8 lg:flex">
       <div className="flex-1 space-y-4 sm:text-center lg:text-left">
         <h1 className="text-4xl font-bold text-secondary-light xl:text-5xl">
           Transform Ordinary Ingredients into
@@ -14,12 +14,12 @@ const Banner = () => {
         </p>
         <div className="items-center justify-center space-y-3 pt-10 sm:flex sm:space-x-6 sm:space-y-0 lg:justify-start">
           <a
-            href="javascript:void(0)"
+            href="#"
             className="block w-full rounded-md bg-white px-7 py-3 text-center text-gray-800 shadow-md outline outline-1 outline-secondary sm:w-auto">
             Get started
           </a>
           <a
-            href="javascript:void(0)"
+            href="#"
             className="block w-full rounded-md bg-secondary px-7 py-3 text-center text-gray-200 hover:bg-secondary-light sm:w-auto">
             Try it out
           </a>
