@@ -1,8 +1,11 @@
 import React from 'react';
 import Banner from '../../components/Banner/Banner';
 import ChefDetails from '../../components/ChefDetails/ChefDetails';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
+  const chefsInfo = useLoaderData();
+  console.log(chefsInfo);
   return (
     <div className=" ">
       <Banner></Banner>
@@ -13,11 +16,8 @@ const Home = () => {
             Meet Our Talented and Experienced Chefs, Whose Expertise Guarantees, a Memorable Culinary Experience.
           </p>
         </div>
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-          <ChefDetails></ChefDetails>
-          <ChefDetails></ChefDetails>
-          <ChefDetails></ChefDetails>
-        </div>
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">{
+        chefsInfo.map((chef) => <ChefDetails key={chef.id} chefDetails={chef}></ChefDetails>)}</div>
       </div>
     </div>
   );
