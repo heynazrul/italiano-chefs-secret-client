@@ -13,7 +13,7 @@ const Header = () => {
                 to={'/'}
                 aria-label="Italiano Chefs Secret"
                 title="Italiano Secret">
-                <span className='font-logo text-4xl text-secondary'>Italiano Chef's Secret</span>
+                <span className='font-logo text-4xl text-secondary'>Italiano Chefs Secret</span>
               </Link>
               <div className="md:hidden">
                 <button
