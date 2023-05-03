@@ -11,7 +11,11 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
-    logOut();
+    logOut()
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div>

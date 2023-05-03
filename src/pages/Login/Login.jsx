@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { SiCodechef } from 'react-icons/si';
 import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
@@ -8,6 +8,9 @@ import { toast } from 'react-hot-toast';
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const handleLogIn = (event) => {
     event.preventDefault();
@@ -19,9 +22,8 @@ const Login = () => {
       .then((result) => {
         setError('');
         const loggedUser = result.user;
-        toast.success('Login Sucessful!', {
-          position: 'top-right',
-        });
+        toast.success('Login Successful!');
+        navigate(from, { replace: true });
         console.log(loggedUser);
       })
       .catch((error) => {
