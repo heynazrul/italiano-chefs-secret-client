@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 const Register = () => {
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, isImage } = useContext(AuthContext);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -17,13 +19,17 @@ const Register = () => {
       setError('Password should be minimum 6 character');
       return;
     }
+
+    if (!isImage(photo)) {
+      setError('Provide a valid photo URL ex: .jpg, .png, .svg');
+      return;
+    }
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
         updateUser(name, photo);
-        toast.success('Registration Successful!', {
-          position: 'top-right',
-        });
+        toast.success('Registration Successful!');
+        navigate('/');
         console.log(createdUser);
       })
       .catch((error) => {

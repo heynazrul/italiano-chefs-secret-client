@@ -38,6 +38,9 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  const isImage = url => {
+  return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+}
   const authInfo = {
     user,
     loading,
@@ -45,6 +48,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     logOut,
     updateUser,
+    isImage,
   };
 
   useEffect(() => {
