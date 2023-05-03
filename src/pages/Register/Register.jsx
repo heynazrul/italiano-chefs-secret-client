@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
-
+  const [error, setError] = useState('');
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -12,18 +13,38 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
+    if (password && password.length < 6) {
+      setError('Password should be minimum 6 character');
+      return;
+    }
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
         updateUser(name, photo);
+        toast.success('Registration Successful!', {
+          position: 'top-right',
+        });
         console.log(createdUser);
       })
       .catch((error) => {
+        let err = error.message.includes('email-already-in-use');
+        if (err) {
+          setError('Email already in use');
+        }
         console.log(error);
       });
-
     console.log(name, photo, email, password);
   };
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error, {
+        position: 'top-right',
+      });
+    }
+    setError('');
+  }, [error]);
+
   return (
     <main className="mb-20 mt-16 flex h-screen w-full flex-col items-center justify-center bg-gray-50 sm:px-4">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
@@ -79,6 +100,8 @@ const Register = () => {
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-rose-600"
               />
             </div>
+            {/* Error message section */}
+            {/* <div className="bg-rose-400 px-4 py-2">{error && toast.error(error)}</div> */}
             <button className="mt-4 w-full rounded-lg bg-primary px-4 py-2 font-medium text-white duration-150 hover:bg-primary-light active:bg-rose-700">
               Create account
             </button>

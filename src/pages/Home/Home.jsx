@@ -16,7 +16,7 @@ const Home = () => {
             Meet Our Talented and Experienced Chefs, Whose Expertise Guarantees, a Memorable Culinary Experience.
           </p>
         </div>
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">{
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 my-12">{
         chefsInfo.map((chef) => <ChefDetails key={chef.id} chefDetails={chef}></ChefDetails>)}</div>
       </div>
     </div>

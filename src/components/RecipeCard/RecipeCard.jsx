@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaCircle } from 'react-icons/fa';
 import { HiHeart } from 'react-icons/hi';
 import { Rating } from '@smastrom/react-rating';
+import { toast } from 'react-hot-toast';
 
 const RecipeCard = ({ recipe }) => {
   const { recipe_picture, recipe_name, rating, ingredients, cooking_method } = recipe;
+  const [isAdded, setIsAdded] = useState(false)
+
+  const handleFavbtn = () => {
+    setIsAdded(true)
+    toast.success('Added to Favorite!')
+  }
   console.log(recipe);
   return (
     <div className="mb-6 rounded-md border-2 py-4 shadow-sm">
@@ -56,7 +63,11 @@ const RecipeCard = ({ recipe }) => {
             />
             <p>{rating}</p>
           </div>
-          <HiHeart className="text-2xl text-primary"></HiHeart>
+          <button
+            onClick={handleFavbtn}
+            disabled={isAdded}>
+            <HiHeart className={`text-2xl ${isAdded ? 'text-primary' : 'text-gray-500'}`}></HiHeart>
+          </button>
         </div>
       </div>
     </div>

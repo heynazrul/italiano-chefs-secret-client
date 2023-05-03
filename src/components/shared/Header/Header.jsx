@@ -103,9 +103,11 @@ const Header = () => {
                         <FaUserCircle className="text-3xl"></FaUserCircle>
                       )}
                     </button>
-                    <span className="absolute top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white transition-all group-hover:scale-100">
-                      {user.displayName}
-                    </span>
+                    {user.displayName && (
+                      <span className="absolute top-12 scale-0 rounded bg-gray-800 p-2 text-xs text-white transition-all group-hover:scale-100">
+                        {user.displayName}
+                      </span>
+                    )}
                   </div>
                 )}
                 {user ? (

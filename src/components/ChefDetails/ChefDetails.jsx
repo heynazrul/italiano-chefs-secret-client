@@ -7,7 +7,7 @@ const ChefDetails = ({ chefDetails }) => {
   const { id, chef_name, chef_picture, experience, likes, num_recipes } = chefDetails;
 
   return (
-    <section className="my-12 flex flex-col items-center justify-center rounded-md border px-4 py-8 text-center shadow-sm">
+    <section className="flex flex-col items-center justify-center rounded-md border px-4 py-8 text-center shadow-sm">
       {/* <div className="h-60 w-full sm:h-52 md:h-56">
         <img
           src="https://images.unsplash.com/photo-1579017331263-ef82f0bbc748?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80"
@@ -24,7 +24,7 @@ const ChefDetails = ({ chefDetails }) => {
       </div>
       <div className="mt-4">
         <h4 className="text-lg font-semibold text-dark">{chef_name}</h4>
-        <p className="text-primary">{experience}</p>
+        <p className="text-primary">{experience} experience</p>
         <p className="mt-2 text-grey">
           <AiFillLike className="inline-block text-xl" /> Recipes: {num_recipes}
         </p>

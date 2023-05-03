@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SiCodechef } from 'react-icons/si';
 import { AuthContext } from '../../providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -13,19 +14,22 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    if (password && password.length < 6) {
-      setError('Password should be more than 5 character');
-      return;
-    }
-    setError('');
+
     signIn(email, password)
       .then((result) => {
-        const loggedUser = result.user;
         setError('');
+        const loggedUser = result.user;
+        toast.success('Login Sucessful!', {
+          position: 'top-right',
+        });
         console.log(loggedUser);
       })
       .catch((error) => {
-        setError(error.message);
+        let err = error.message.includes('wrong-password');
+        if (err) {
+          setError('Wrong Password');
+        }
+        // setError(error.message);
       });
   };
   return (
@@ -44,7 +48,9 @@ const Login = () => {
             </p>
           </div>
 
-          <form onSubmit={handleLogIn}>
+          <form
+            onSubmit={handleLogIn}
+            className="space-y-5">
             <div>
               <label className="font-medium">Email</label>
               <input
@@ -64,13 +70,14 @@ const Login = () => {
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-primary"
               />
             </div>
-            <div>
-              {error && (
-                <>
-                  <p>{error}</p>
-                </>
-              )}
-            </div>
+
+            {/* Error section */}
+            {error && (
+              <>
+                <p className="mt-4 bg-red-400 px-4 py-1 text-center text-dark">{error}</p>
+              </>
+            )}
+
             <button className="mt-4 w-full rounded-lg bg-primary px-4 py-2 font-medium text-white duration-150 hover:bg-primary-light active:bg-rose-700">
               Sign in
             </button>
