@@ -4,13 +4,14 @@ import { initializeApp } from 'firebase/app';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+console.log('environment variable', import.meta.env.VITE_APIKEY);
 const firebaseConfig = {
-  apiKey: 'AIzaSyAbysPiqy33x1-k30MJ-9g8lk2L18G06Dc',
-  authDomain: 'italiano-chefs-secret.firebaseapp.com',
-  projectId: 'italiano-chefs-secret',
-  storageBucket: 'italiano-chefs-secret.appspot.com',
-  messagingSenderId: '394495697858',
-  appId: '1:394495697858:web:cc2cb5855f6c8587a22c5b',
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
