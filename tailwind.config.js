@@ -8,10 +8,12 @@ export default {
         logo: ['Satisfy', 'cursive'],
       },
       colors: {
-        primary: '#14471E',
-        'primary-light': '#68904D',
-        secondary: '#DA6A00',
-        'secondary-light': '#EE9B01'
+        primary: '#FA023C',
+        'primary-light': '#e10538',
+        secondary: '#4B000F',
+        tertiary: '#C8FF00',
+        dark: '#040004',
+        grey: '#413D3D',
       },
     },
   },

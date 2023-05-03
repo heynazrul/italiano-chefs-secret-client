@@ -4,7 +4,7 @@ import { AiFillLike, AiOutlineArrowRight } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 const ChefDetails = ({ chefDetails }) => {
-  const {id, chef_name, chef_picture, experience, likes, num_recipes } = chefDetails;
+  const { id, chef_name, chef_picture, experience, likes, num_recipes } = chefDetails;
 
   return (
     <section className="my-12 flex flex-col items-center justify-center rounded-md border px-4 py-8 text-center shadow-sm">
@@ -23,15 +23,15 @@ const ChefDetails = ({ chefDetails }) => {
         />
       </div>
       <div className="mt-4">
-        <h4 className="text-lg font-semibold text-gray-700">{chef_name}</h4>
-        <p className="text-secondary">{experience}</p>
-        <p className="mt-2 text-gray-600">
+        <h4 className="text-lg font-semibold text-dark">{chef_name}</h4>
+        <p className="text-primary">{experience}</p>
+        <p className="mt-2 text-grey">
           <AiFillLike className="inline-block text-xl" /> Recipes: {num_recipes}
         </p>
         <div className="mt-6">
           <Link
             to={`/chef/${id}`}
-            className="inline-flex items-center gap-x-1 font-medium text-indigo-600 duration-150 hover:text-indigo-400">
+            className="inline-flex items-center gap-x-1 rounded-sm border border-primary px-3 py-2 text-center font-medium  text-primary hover:text-white duration-150  hover:bg-primary">
             View Recipes <AiOutlineArrowRight className="inline-block" />
           </Link>
         </div>

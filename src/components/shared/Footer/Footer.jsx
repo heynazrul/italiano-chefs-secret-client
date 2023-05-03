@@ -23,7 +23,7 @@ const footerNavs = [
 
 const Footer = () => {
   return (
-    <footer className="bg-yellow-100 pt-10">
+    <footer className="bg-primary pt-10">
       <div className="mx-auto max-w-screen-xl px-4 text-gray-600 md:px-8">
         <div className="justify-between sm:flex">
           <div className="space-y-6">
@@ -31,21 +31,21 @@ const Footer = () => {
               to={'/'}
               aria-label="Italiano Chefs Secret"
               title="Italiano Secret">
-              <span className="font-logo text-4xl text-secondary">Italiano Chefs Secret</span>
+              <span className="font-logo text-4xl text-white">Italiano Chefs Secret</span>
             </Link>
-            <p className="max-w-md font-logo">Nulla auctor metus vitae lectus iaculis, vel euismod massa efficitur.</p>
+            <p className="max-w-md font-logo text-gray-200">Nulla auctor metus vitae lectus iaculis, vel euismod massa efficitur.</p>
             <ul className="flex flex-wrap items-center gap-4 text-sm sm:text-base">
               {footerNavs.map((item, idx) => (
                 <li
                   key={idx}
-                  className="text-gray-800 duration-150 hover:text-gray-500">
+                  className="text-gray-200 duration-150 hover:text-gray-300">
                   <Link to={item.to}>{item.name}</Link>
                 </li>
               ))}
             </ul>
           </div>
           <div className="mt-6">
-            <p className="font-semibold text-gray-700">Get the app</p>
+            <p className="font-semibold text-gray-100">Get the app</p>
             <div className="mt-3 flex items-center gap-3 sm:block">
               <a href="#">
                 <svg
@@ -459,7 +459,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="mt-10 border-t py-10 md:text-center">
+        <div className="mt-10 border-t py-10 md:text-center text-gray-200">
           <p>© 2022 Italiano Chefs Inc. All rights reserved.</p>
         </div>
       </div>
