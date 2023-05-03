@@ -1,12 +1,36 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SiCodechef } from 'react-icons/si';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  const [error, setError] = useState('');
+
+  const handleLogIn = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    if (password && password.length < 6) {
+      setError('Password should be more than 5 character');
+      return;
+    }
+    setError('');
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        setError('');
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
   return (
     <div>
-      <main className="flex h-screen w-full flex-col items-center justify-center px-4 my-16">
+      <main className="mb-16 flex h-screen w-full flex-col items-center justify-center px-4">
         <div className="w-full max-w-sm space-y-8 text-gray-600">
           <div className="mt-5 space-y-2 text-center">
             <h3 className="text-2xl font-bold text-gray-800 sm:text-3xl">Log in to your account</h3>
@@ -20,11 +44,12 @@ const Login = () => {
             </p>
           </div>
 
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={handleLogIn}>
             <div>
               <label className="font-medium">Email</label>
               <input
                 type="email"
+                name="email"
                 required
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-primary"
               />
@@ -34,9 +59,17 @@ const Login = () => {
               <label className="font-medium">Password</label>
               <input
                 type="password"
+                name="password"
                 required
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-primary"
               />
+            </div>
+            <div>
+              {error && (
+                <>
+                  <p>{error}</p>
+                </>
+              )}
             </div>
             <button className="mt-4 w-full rounded-lg bg-primary px-4 py-2 font-medium text-white duration-150 hover:bg-primary-light active:bg-rose-700">
               Sign in

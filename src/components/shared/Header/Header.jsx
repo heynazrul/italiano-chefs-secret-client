@@ -1,10 +1,18 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { SiCodechef } from 'react-icons/si';
+import { FaUserCircle } from 'react-icons/fa';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut();
+  };
   return (
     <div>
       <nav className="w-full border-b bg-white md:static md:border-none md:text-sm">
@@ -15,7 +23,7 @@ const Header = () => {
               aria-label="Italiano Chefs Secret"
               title="Italiano Secret">
               <div className="flex items-center  justify-center gap-3">
-                <SiCodechef className='text-primary text-5xl'></SiCodechef>
+                <SiCodechef className="text-5xl text-primary"></SiCodechef>
                 <span className="font-logo text-4xl text-primary"> Italiano Chefs Secret</span>
               </div>
             </Link>
@@ -81,20 +89,53 @@ const Header = () => {
               </li>
               <span className="hidden h-6 w-px bg-gray-300 md:block"></span>
               <div className="items-center gap-x-6 space-y-3 md:flex md:space-y-0">
-                <li>
+                {/* {user && <FaUserCircle className="text-3xl"></FaUserCircle>} */}
+                {user && (
+                  <div className="group relative flex justify-center">
+                    <button className="rounded-full shadow-sm">
+                      {user.photoURL ? (
+                        <img
+                          className="h-12 rounded-full"
+                          src={user.photoURL}
+                          alt=""
+                        />
+                      ) : (
+                        <FaUserCircle className="text-3xl"></FaUserCircle>
+                      )}
+                    </button>
+                    <span className="absolute top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white transition-all group-hover:scale-100">
+                      {user.displayName}
+                    </span>
+                  </div>
+                )}
+                {user ? (
                   <Link
-                    to={'/login'}
-                    className="block rounded-lg border py-3 text-center text-primary hover:text-primary-light md:border-none">
-                    Log in
+                    onClick={handleLogOut}
+                    className="block rounded-lg bg-primary px-4 py-3 text-center font-medium text-white shadow hover:bg-primary-light md:inline">
+                    Logout
                   </Link>
-                </li>
-                <li>
+                ) : (
+                  <>
+                    <Link
+                      to={'/login'}
+                      className="block rounded-lg border py-3 text-center text-primary hover:text-primary-light md:border-none">
+                      Log in
+                    </Link>
+
+                    <Link
+                      to={'/register'}
+                      className="block rounded-lg bg-primary px-4 py-3 text-center font-medium text-white shadow hover:bg-primary-light md:inline">
+                      Register
+                    </Link>
+                  </>
+                )}
+                {/* <li>
                   <Link
                     to={'/register'}
                     className="block rounded-lg bg-primary px-4 py-3 text-center font-medium text-white shadow hover:bg-primary-light md:inline">
                     Register
                   </Link>
-                </li>
+                </li> */}
               </div>
             </ul>
           </div>

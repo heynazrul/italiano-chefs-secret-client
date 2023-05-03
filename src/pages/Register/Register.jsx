@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
+  const { createUser, updateUser } = useContext(AuthContext);
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photo = form.photo.value;
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        updateUser(name, photo);
+        console.log(createdUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    console.log(name, photo, email, password);
+  };
   return (
-    <main className="flex h-screen w-full flex-col items-center justify-center bg-gray-50 sm:px-4 mt-16 mb-20">
+    <main className="mb-20 mt-16 flex h-screen w-full flex-col items-center justify-center bg-gray-50 sm:px-4">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
         <div className="mt-5 space-y-2 text-center">
           <h3 className="text-2xl font-bold text-gray-800 sm:text-3xl">Create an account</h3>
@@ -19,12 +41,13 @@ const Register = () => {
 
         <div className="bg-white p-4 py-6 shadow sm:rounded-lg sm:p-6">
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleRegister}
             className="space-y-5">
             <div>
               <label className="font-medium">Name</label>
               <input
                 type="text"
+                name="name"
                 required
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-rose-600"
               />
@@ -33,6 +56,7 @@ const Register = () => {
               <label className="font-medium">Email</label>
               <input
                 type="email"
+                name="email"
                 required
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-rose-600"
               />
@@ -41,6 +65,7 @@ const Register = () => {
               <label className="font-medium">Password</label>
               <input
                 type="password"
+                name="password"
                 required
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-rose-600"
               />
@@ -49,6 +74,7 @@ const Register = () => {
               <label className="font-medium">Photo URL</label>
               <input
                 type="text"
+                name="photo"
                 required
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-rose-600"
               />
