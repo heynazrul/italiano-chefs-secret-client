@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { SiCodechef } from 'react-icons/si';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +14,10 @@ const Header = () => {
               to={'/'}
               aria-label="Italiano Chefs Secret"
               title="Italiano Secret">
-              <span className="font-logo text-4xl text-primary">Italiano Chefs Secret</span>
+              <div className="flex items-center  justify-center gap-3">
+                <SiCodechef className='text-primary text-5xl'></SiCodechef>
+                <span className="font-logo text-4xl text-primary"> Italiano Chefs Secret</span>
+              </div>
             </Link>
             <div className="md:hidden">
               <button

@@ -1,8 +1,9 @@
 import React from 'react';
+import { AiFillLike } from 'react-icons/ai';
 
 const Banner = () => {
   return (
-    <section className="mb-12 mt-3 items-center bg-gray-600 bg-[url('https://www.wcrf-uk.org/wp-content/uploads/2021/06/588595864r-LS.jpg')] bg-cover bg-no-repeat px-20 py-16 bg-blend-multiply lg:flex ">
+    <section className="mb-12 mt-3 items-center bg-gray-600 bg-[url('https://images.pexels.com/photos/5779786/pexels-photo-5779786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-no-repeat px-20 py-16 bg-blend-multiply lg:flex ">
       <div className="mx-auto max-w-7xl flex-1 space-y-4 ">
         <div className="mx-auto md:w-1/2 md:text-center">
           <h1
