@@ -8,10 +8,11 @@ export default {
         logo: ['Satisfy', 'cursive'],
       },
       colors: {
-        primary: '#FA023C',
-        'primary-light': '#e10538',
-        secondary: '#4B000F',
-        tertiary: '#C8FF00',
+        primary: '#183A1D',
+        'primary-light': '#e1eedd',
+        secondary: '#F57E00',
+        light: '#fefbe9',
+        tertiary: '#f6c453',
         dark: '#040004',
         grey: '#413D3D',
       },
@@ -23,3 +24,10 @@ export default {
 // primary: '#121223',
 //         secondary: '#AE445A',
 // FF7622;
+
+// primary: '#FA023C',
+//         'primary-light': '#e10538',
+//         secondary: '#4B000F',
+//         tertiary: '#C8FF00',
+//         dark: '#040004',
+//         grey: '#413D3D',

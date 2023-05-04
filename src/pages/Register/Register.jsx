@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 const Register = () => {
-  const { createUser, updateUser, isImage } = useContext(AuthContext);
+  const { createUser, updateUser, isImage, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -40,6 +40,19 @@ const Register = () => {
         console.log(error);
       });
     console.log(name, photo, email, password);
+  };
+
+  const handleGoogleLogin = () => {
+    signInWithGoogle()
+      .then((result) => {
+        setError('');
+        const loggedUser = result.user;
+        toast.success('Login Successful!');
+        navigate('/');
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
   useEffect(() => {
@@ -113,7 +126,9 @@ const Register = () => {
             </button>
           </form>
           <div className="mt-5">
-            <button className="mt-5 flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 text-sm font-medium duration-150 hover:bg-gray-50 active:bg-gray-100">
+            <button
+              onClick={handleGoogleLogin}
+              className="mt-5 flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 text-sm font-medium duration-150 hover:bg-gray-50 active:bg-gray-100">
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 48 48"

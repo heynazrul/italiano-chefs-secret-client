@@ -9,7 +9,6 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
 
   const handleLogOut = () => {
     logOut()
@@ -20,7 +19,7 @@ const Header = () => {
   };
   return (
     <div>
-      <nav className="w-full border-b bg-white md:static md:border-none md:text-sm">
+      <nav className="w-full border-b bg-light md:static md:border-none md:text-sm">
         <div className="mx-auto max-w-screen-xl items-center px-4 md:flex md:px-8">
           <div className="flex items-center justify-between py-3 md:block md:py-5">
             <Link
@@ -28,8 +27,8 @@ const Header = () => {
               aria-label="Italiano Chefs Secret"
               title="Italiano Secret">
               <div className="flex items-center  justify-center gap-3">
-                <SiCodechef className="text-5xl text-primary"></SiCodechef>
-                <span className="font-logo text-4xl text-primary"> Italiano Chefs Secret</span>
+                <SiCodechef className="text-2xl md:text-5xl text-primary"></SiCodechef>
+                <span className="font-logo text-2xl text-primary md:text-4xl"> Italiano Chefs Secret</span>
               </div>
             </Link>
             <div className="md:hidden">
@@ -118,20 +117,20 @@ const Header = () => {
                 {user ? (
                   <Link
                     onClick={handleLogOut}
-                    className="block rounded-lg bg-primary px-4 py-3 text-center font-medium text-white shadow hover:bg-primary-light md:inline">
+                    className="block rounded-lg bg-primary px-4 py-3 text-center font-medium text-white shadow hover:bg-secondary md:inline">
                     Logout
                   </Link>
                 ) : (
                   <>
                     <Link
                       to={'/login'}
-                      className="block rounded-lg border py-3 text-center text-primary hover:text-primary-light md:border-none">
+                      className="block rounded-lg px-4 py-3 font-medium shadow text-center  text-secondary outline outline-1 hover:text-primary  md:border-none">
                       Log in
                     </Link>
 
                     <Link
                       to={'/register'}
-                      className="block rounded-lg bg-primary px-4 py-3 text-center font-medium text-white shadow hover:bg-primary-light md:inline">
+                      className="block rounded-lg bg-primary px-4 py-3 text-center font-medium text-white shadow hover:bg-secondary md:inline">
                       Register
                     </Link>
                   </>

@@ -9,9 +9,9 @@ const Home = () => {
   return (
     <div className=" ">
       <Banner></Banner>
-      <div className="mx-auto max-w-screen-xl px-4 md:px-8">
+      <section id='meetChef' className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="mx-auto max-w-xl text-center">
-          <h2 className=" text-4xl font-medium text-dark xl:text-5xl">Meet Our Chefs</h2>
+          <h2 className=" text-4xl md:text-5xl font-logo font-medium text-primary xl:text-5xl">Meet Our Chefs</h2>
           <p className="mt-4 text-gray-600">
             Meet Our Talented and Experienced Chefs, Whose Expertise Guarantees, a Memorable Culinary Experience.
           </p>
@@ -23,7 +23,7 @@ const Home = () => {
               chefDetails={chef}></ChefDetails>
           ))}
         </div>
-      </div>
+      </section>
     </div>
   );
 };

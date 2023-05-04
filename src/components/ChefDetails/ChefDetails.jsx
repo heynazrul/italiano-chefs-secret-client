@@ -1,37 +1,44 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { AiFillLike, AiOutlineArrowRight } from 'react-icons/ai';
+import { GiHotMeal } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
 const ChefDetails = ({ chefDetails }) => {
   const { id, chef_name, chef_picture, experience, likes, num_recipes } = chefDetails;
 
   return (
-    <section className="flex flex-col items-center justify-center rounded-md border px-4 py-8 text-center shadow-sm">
-      {/* <div className="h-60 w-full sm:h-52 md:h-56">
+    <section className="flex flex-col items-center justify-center rounded-md border text-center shadow hover:bg-primary-light">
+      <div className="h-60 w-full sm:h-52 md:h-56">
         <img
-          src="https://images.unsplash.com/photo-1579017331263-ef82f0bbc748?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80"
-          className="h-full w-full rounded-xl object-cover object-center shadow-md"
+          src={chef_picture}
+          className="h-full w-full rounded-t-md object-cover object-center shadow-md"
           alt=""
         />
-      </div> */}
-      <div className="mx-auto h-24 w-24">
+      </div>
+      {/* <div className="mx-auto h-24 w-24">
         <img
           src={chef_picture}
           className="h-full w-full rounded-full object-cover object-center"
           alt=""
         />
-      </div>
-      <div className="mt-4">
+      </div> */}
+      <div className="mt-4 space-y-4 px-4 pb-6">
         <h4 className="text-lg font-semibold text-dark">{chef_name}</h4>
-        <p className="text-primary">{experience} experience</p>
-        <p className="mt-2 text-grey">
-          <AiFillLike className="inline-block text-xl" /> Recipes: {num_recipes}
-        </p>
+
+        <p className="text-[#FF5200]">{experience} experience</p>
+        <div className="flex items-center justify-center gap-2">
+          <GiHotMeal className="text-xl text-primary"></GiHotMeal>
+          <p className="text-primary">Recipes: {num_recipes}</p>
+        </div>
+        <div className="flex items-center justify-center gap-2">
+          <AiFillLike className="text-xl text-primary"></AiFillLike>
+          <p className="text-primary">Likes: {likes}</p>
+        </div>
         <div className="mt-6">
           <Link
             to={`/chef/${id}`}
-            className="inline-flex items-center gap-x-1 rounded-sm border border-primary px-3 py-2 text-center font-medium  text-primary hover:text-white duration-150  hover:bg-primary">
+            className="inline-flex items-center gap-x-1 rounded-sm border border-primary px-3 py-2 text-center font-medium  text-primary duration-150 hover:bg-primary  hover:text-white">
             View Recipes <AiOutlineArrowRight className="inline-block" />
           </Link>
         </div>
