@@ -19,19 +19,25 @@ const ChefBanner = ({ chefData }) => {
             </div>
             <div className="mt-6 max-w-xl space-y-3 px-4 sm:px-0 md:mt-0 lg:max-w-2xl">
               <h2 className="text-3xl font-semibold text-gray-800 sm:text-4xl">{chef_name}</h2>
-              <hr className='w-32 border-2 border-green-700'/>
+              <hr className="w-32 border-2 border-green-700" />
               <p className="mt-3 text-gray-600">{bio}</p>
               <div className="flex items-center gap-2">
                 <GoBriefcase className="text-xl text-gray-700"></GoBriefcase>
-                <p className="text-gray-700">Experience: {experience}</p>
+                <p className="text-gray-700">
+                  <span className="font-semibold">Experience:</span> {experience}
+                </p>
               </div>
               <div className="flex items-center gap-2">
                 <GiHotMeal className="text-xl text-gray-700"></GiHotMeal>
-                <p className="text-gray-700">Recipes: {num_recipes}</p>
+                <p className="text-gray-700">
+                  <span className="font-semibold">Recipes:</span> {num_recipes}
+                </p>
               </div>
               <div className="flex items-center gap-2">
                 <AiFillLike className="text-xl text-gray-700"></AiFillLike>
-                <p className="text-gray-700">Likes: {likes}</p>
+                <p className="text-gray-700">
+                  <span className='font-semibold'>Likes:</span> {likes}
+                </p>
               </div>
             </div>
           </div>

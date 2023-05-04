@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { SiCodechef } from 'react-icons/si';
 import { FaUserCircle } from 'react-icons/fa';
@@ -27,7 +27,7 @@ const Header = () => {
               aria-label="Italiano Chefs Secret"
               title="Italiano Secret">
               <div className="flex items-center  justify-center gap-3">
-                <SiCodechef className="text-2xl md:text-5xl text-primary"></SiCodechef>
+                <SiCodechef className="text-2xl text-primary md:text-5xl"></SiCodechef>
                 <span className="font-logo text-2xl text-primary md:text-4xl"> Italiano Chefs Secret</span>
               </div>
             </Link>
@@ -124,7 +124,7 @@ const Header = () => {
                   <>
                     <Link
                       to={'/login'}
-                      className="block rounded-lg px-4 py-3 font-medium shadow text-center  text-secondary outline outline-1 hover:text-primary  md:border-none">
+                      className="block rounded-lg px-4 py-3 text-center font-medium text-secondary  shadow outline outline-1 hover:text-primary  md:border-none">
                       Log in
                     </Link>
 
