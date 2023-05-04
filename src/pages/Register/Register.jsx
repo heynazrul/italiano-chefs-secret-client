@@ -65,7 +65,7 @@ const Register = () => {
   }, [error]);
 
   return (
-    <main className="mb-20 mt-16 flex h-screen w-full flex-col items-center justify-center bg-gray-50 sm:px-4">
+    <main className="py-20 flex w-full flex-col items-center justify-center bg-gray-50 sm:px-4">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
         <div className="mt-5 space-y-2 text-center">
           <h3 className="text-2xl font-bold text-gray-800 sm:text-3xl">Create an account</h3>

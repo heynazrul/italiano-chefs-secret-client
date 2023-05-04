@@ -10,11 +10,11 @@ const ParallaxBanner = () => {
     <div className="">
       <Parallax
         bgImage={img}
-        bgImageStyle={{ objecFit: 'cover', objectPosition:'center' }}
+        bgImageStyle={{ objectFit: 'cover', objectPosition: 'center' }}
         strength={300}>
         <div className="flex h-60 items-center justify-center">
           <div className="absolute space-y-4 text-center">
-            <h2 className="font-logo text-4xl font-bold text-white">Cook with the best Chef's</h2>
+            <h2 className="font-logo text-4xl font-medium text-white">Cook with the best Chef's</h2>
             <a
               href="#meetChef"
               className="inline-block rounded-md bg-green-600 px-10 py-3 text-center text-white hover:bg-secondary">

@@ -65,7 +65,7 @@ const Login = () => {
 
   return (
     <div>
-      <main className="mb-16 flex h-screen w-full flex-col items-center justify-center px-4">
+      <main className="mb-16 flex  w-full flex-col items-center justify-center px-4">
         <div className="w-full max-w-sm space-y-8 text-gray-600">
           <div className="mt-5 space-y-2 text-center">
             <h3 className="text-2xl font-bold text-gray-800 sm:text-3xl">Log in to your account</h3>
