@@ -1,6 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { AiOutlineFilePdf } from 'react-icons/ai';
+import Pdf from 'react-to-pdf';
+
+const ref = React.createRef();
 
 const Blog = () => {
   const questionList = [
@@ -32,12 +35,25 @@ const Blog = () => {
               Concepts to clear in web development
             </p>
           </div>
-          <button className="mt-4 rounded-lg bg-primary px-4 py-2 text-center font-medium text-white shadow hover:bg-green-900 md:inline">
-            <span>Download PDF</span>
-            <AiOutlineFilePdf className="ml-2 inline-block text-xl"></AiOutlineFilePdf>
-          </button>
+          <Pdf
+            x={30}
+            y={10}
+            scale={1}
+            targetRef={ref}
+            filename="blog-question.pdf">
+            {({ toPdf }) => (
+              <button
+                onClick={toPdf}
+                className="mt-4 rounded-lg bg-primary px-4 py-2 text-center font-medium text-white shadow hover:bg-green-900 md:inline">
+                <span>Download PDF</span>
+                <AiOutlineFilePdf className="ml-2 inline-block text-xl"></AiOutlineFilePdf>
+              </button>
+            )}
+          </Pdf>
         </div>
-        <div className="mt-12 flex-1 md:mt-0">
+        <div
+          ref={ref}
+          className="mt-12 flex-1 md:mt-0">
           <ul className="space-y-4 divide-y">
             {questionList.map((item, idx) => (
               <li
