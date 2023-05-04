@@ -38,7 +38,7 @@ const Register = () => {
         }
         console.log(error);
       });
-    console.log(name, photo, email, password);
+ 
   };
 
   const handleGoogleLogin = () => {

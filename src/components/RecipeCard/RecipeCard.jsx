@@ -12,7 +12,7 @@ const RecipeCard = ({ recipe }) => {
     setIsAdded(true)
     toast.success('Added to Favorite!')
   }
-  console.log(recipe);
+
   return (
     <div className="mb-6 rounded-md border-2 py-4 shadow-sm">
       <div className="flex h-full flex-col justify-between">

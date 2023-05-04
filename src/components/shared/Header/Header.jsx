@@ -4,11 +4,13 @@ import { Link, NavLink } from 'react-router-dom';
 import { SiCodechef } from 'react-icons/si';
 import { FaUserCircle } from 'react-icons/fa';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { InfinitySpin } from 'react-loader-spinner';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { user, logOut } = useContext(AuthContext);
+
 
   const handleLogOut = () => {
     logOut()
