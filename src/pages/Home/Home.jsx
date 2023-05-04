@@ -4,6 +4,8 @@ import ChefDetails from '../../components/ChefDetails/ChefDetails';
 import { useLoaderData } from 'react-router-dom';
 import Partner from '../../components/Partner/Partner';
 import Testimonial from '../../components/Testimonial/Testimonial';
+import NewsLetter from '../../components/NewsLetter/NewsLetter';
+import ParallaxBanner from '../../components/Banner/ParallaxBanner';
 
 const Home = () => {
   const chefsInfo = useLoaderData();
@@ -15,7 +17,7 @@ const Home = () => {
         id="meetChef"
         className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="mx-auto max-w-xl text-center">
-          <h2 className=" font-logo text-4xl font-medium text-primary md:text-5xl xl:text-5xl">Meet Our Chefs</h2>
+          <h2 className=" font-logo text-4xl font-medium text-primary md:text-5xl">Meet Our Chefs</h2>
           <p className="mt-4 text-gray-600">
             Meet Our Talented and Experienced Chefs, Whose Expertise Guarantees, a Memorable Culinary Experience.
           </p>
@@ -28,8 +30,10 @@ const Home = () => {
           ))}
         </div>
       </section>
-      <Partner></Partner>
+      <ParallaxBanner></ParallaxBanner>
       <Testimonial></Testimonial>
+      <Partner></Partner>
+      <NewsLetter></NewsLetter>
     </>
   );
 };

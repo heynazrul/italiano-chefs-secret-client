@@ -29,8 +29,8 @@ const Testimonial = () => {
     <section className="py-16">
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="max-w-xl sm:text-center md:mx-auto">
-          <h3 className="text-3xl font-semibold text-primary sm:text-4xl">Real Stories from Real People</h3>
-          <p className="mt-3 text-gray-600">Testimonials from Our Satisfied Customers shows that our chefs are world class in italian cuisine. They have made over 10000 dishes past few years.</p>
+          <h3 className="text-4xl font-logo font-medium text-primary md:text-5xl">Real Stories from Real People</h3>
+          <p className="mt-5 text-gray-600">Testimonials from Our Satisfied Customers shows that our chefs are world class in italian cuisine. They have made over 10000 dishes past few years.</p>
         </div>
         <div className="mt-12">
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

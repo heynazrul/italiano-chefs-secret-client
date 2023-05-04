@@ -23,8 +23,8 @@ const footerNavs = [
 
 const Footer = () => {
   return (
-    <footer className="bg-primary pt-10">
-      <div className="mx-auto max-w-screen-xl px-4 text-gray-600 md:px-8">
+    <footer className="bg-primary pt-16">
+      <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="justify-between sm:flex">
           <div className="space-y-6">
             <Link
@@ -33,7 +33,7 @@ const Footer = () => {
               title="Italiano Secret">
               <span className="font-logo text-4xl text-white">Italiano Chefs Secret</span>
             </Link>
-            <p className="max-w-md font-logo text-gray-200">Nulla auctor metus vitae lectus iaculis, vel euismod massa efficitur.</p>
+            <p className="max-w-md font-logo text-gray-200">A Culinary Journey Through Italys Finest Dishes</p>
             <ul className="flex flex-wrap items-center gap-4 text-sm sm:text-base">
               {footerNavs.map((item, idx) => (
                 <li
@@ -459,7 +459,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="mt-10 border-t py-10 md:text-center text-gray-200">
+        <div className="mt-10 border-t py-10 text-gray-200 md:text-center">
           <p>© 2022 Italiano Chefs Inc. All rights reserved.</p>
         </div>
       </div>
