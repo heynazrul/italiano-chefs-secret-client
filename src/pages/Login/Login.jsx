@@ -6,7 +6,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signInnWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,6 +27,7 @@ const Login = () => {
         console.log(loggedUser);
       })
       .catch((error) => {
+        console.log(error.message);
         let err = error.message.includes('wrong-password');
         if (err) {
           setError('Wrong Password');
@@ -34,6 +35,21 @@ const Login = () => {
         // setError(error.message);
       });
   };
+
+  const handleGoogleLogin = () => {
+    signInnWithGoogle()
+      .then((result) => {
+        setError('');
+        const loggedUser = result.user;
+        toast.success('Login Successful!');
+        navigate(from, { replace: true });
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
   return (
     <div>
       <main className="mb-16 flex h-screen w-full flex-col items-center justify-center px-4">
@@ -71,14 +87,13 @@ const Login = () => {
                 required
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-primary"
               />
+              {/* Error section */}
+              {error && (
+                <>
+                  <p className="mt-2 text-center text-sm font-medium text-red-500"> &#x26A0; {error}</p>
+                </>
+              )}
             </div>
-
-            {/* Error section */}
-            {error && (
-              <>
-                <p className="mt-4 bg-red-400 px-4 py-1 text-center text-dark">{error}</p>
-              </>
-            )}
 
             <button className="mt-4 w-full rounded-lg bg-primary px-4 py-2 font-medium text-white duration-150 hover:bg-primary-light active:bg-rose-700">
               Sign in
@@ -92,7 +107,9 @@ const Login = () => {
           </div>
           <div className="space-y-4 text-sm font-medium">
             {/* Google Button */}
-            <button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
+            <button
+              onClick={handleGoogleLogin}
+              className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 48 48"
