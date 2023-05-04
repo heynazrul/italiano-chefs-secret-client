@@ -6,7 +6,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 const Login = () => {
-  const { signIn, signInnWithGoogle } = useContext(AuthContext);
+  const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,7 +37,21 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    signInnWithGoogle()
+    signInWithGoogle()
+      .then((result) => {
+        setError('');
+        const loggedUser = result.user;
+        toast.success('Login Successful!');
+        navigate(from, { replace: true });
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
+  const handleGithubLogin = () => {
+    signInWithGithub()
       .then((result) => {
         setError('');
         const loggedUser = result.user;
@@ -146,7 +160,9 @@ const Login = () => {
               Continue with Google
             </button>
             {/* Github */}
-            <button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
+            <button
+              onClick={handleGithubLogin}
+              className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 48 48"
