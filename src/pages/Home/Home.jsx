@@ -3,6 +3,7 @@ import Banner from '../../components/Banner/Banner';
 import ChefDetails from '../../components/ChefDetails/ChefDetails';
 import { useLoaderData } from 'react-router-dom';
 import Partner from '../../components/Partner/Partner';
+import Testimonial from '../../components/Testimonial/Testimonial';
 
 const Home = () => {
   const chefsInfo = useLoaderData();
@@ -28,6 +29,7 @@ const Home = () => {
         </div>
       </section>
       <Partner></Partner>
+      <Testimonial></Testimonial>
     </>
   );
 };
