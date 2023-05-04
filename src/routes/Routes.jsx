@@ -6,6 +6,7 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import PrivateRoute from './PrivateRoute';
+import Blog from '../pages/Blog/Blog';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => fetch(`https://italiano-chefs-secret-server-heynazrul.vercel.app/chef/${params.id}`),
+      },
+      {
+        path: '/blog',
+        element: <Blog></Blog>,
       },
     ],
   },
