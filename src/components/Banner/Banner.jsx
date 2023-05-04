@@ -24,7 +24,7 @@ const Banner = () => {
             </a>
             <a
               href="#meetChef"
-              className="block w-full rounded-md bg-primary px-7 py-3 text-center text-white hover:bg-secondary sm:w-auto">
+              className="block w-full rounded-md bg-green-700 px-7 py-3 text-center text-white hover:bg-secondary sm:w-auto">
               Try it out
             </a>
           </div>

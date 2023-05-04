@@ -20,7 +20,7 @@ const Register = () => {
       return;
     }
 
-    if (!isImage(photo)) {
+    if (photo && !isImage(photo)) {
       setError('Provide a valid photo URL ex: .jpg, .png, .svg');
       return;
     }
@@ -65,7 +65,7 @@ const Register = () => {
   }, [error]);
 
   return (
-    <main className="py-20 flex w-full flex-col items-center justify-center bg-gray-50 sm:px-4">
+    <main className="flex w-full flex-col items-center justify-center bg-gray-50 py-20 sm:px-4">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
         <div className="mt-5 space-y-2 text-center">
           <h3 className="text-2xl font-bold text-gray-800 sm:text-3xl">Create an account</h3>
@@ -73,7 +73,7 @@ const Register = () => {
             Already have an account?{' '}
             <Link
               to={'/login'}
-              className="font-medium text-primary hover:text-rose-500">
+              className="font-medium text-secondary hover:text-primary">
               Log in
             </Link>
           </p>
@@ -88,26 +88,29 @@ const Register = () => {
               <input
                 type="text"
                 name="name"
-                required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-rose-600"
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-primary"
               />
             </div>
             <div>
-              <label className="font-medium">Email</label>
+              <label className="font-medium">
+                Email <span className="text-red-600">*</span>
+              </label>
               <input
                 type="email"
                 name="email"
                 required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-rose-600"
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-primary"
               />
             </div>
             <div>
-              <label className="font-medium">Password</label>
+              <label className="font-medium">
+                Password <span className="text-red-600">*</span>
+              </label>
               <input
                 type="password"
                 name="password"
                 required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-rose-600"
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-primary"
               />
             </div>
             <div>
@@ -115,13 +118,12 @@ const Register = () => {
               <input
                 type="text"
                 name="photo"
-                required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-rose-600"
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-primary"
               />
             </div>
             {/* Error message section */}
             {/* <div className="bg-rose-400 px-4 py-2">{error && toast.error(error)}</div> */}
-            <button className="mt-4 w-full rounded-lg bg-primary px-4 py-2 font-medium text-white duration-150 hover:bg-primary-light active:bg-rose-700">
+            <button className="mt-4 w-full rounded-lg bg-green-800 px-4 py-2 font-medium text-white duration-150 hover:bg-green-900  active:bg-green-800">
               Create account
             </button>
           </form>

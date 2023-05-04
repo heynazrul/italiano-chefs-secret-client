@@ -66,7 +66,7 @@ const RecipeCard = ({ recipe }) => {
           <button
             onClick={handleFavbtn}
             disabled={isAdded}>
-            <HiHeart className={`text-2xl ${isAdded ? 'text-primary' : 'text-gray-500'}`}></HiHeart>
+            <HiHeart className={`text-2xl ${isAdded ? 'text-rose-600' : 'text-gray-500'}`}></HiHeart>
           </button>
         </div>
       </div>

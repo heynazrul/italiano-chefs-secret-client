@@ -3,7 +3,7 @@ import React from 'react';
 import { Parallax } from 'react-parallax';
 
 const img =
-  'https://images.unsplash.com/photo-1517936401693-1dbb51e467c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
+  'https://images.unsplash.com/photo-1552166539-2ec8888dd801?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1106&q=80';
 
 const ParallaxBanner = () => {
   return (
@@ -11,8 +11,8 @@ const ParallaxBanner = () => {
       <Parallax
         bgImage={img}
         bgImageStyle={{ objectFit: 'cover', objectPosition: 'center' }}
-        strength={300}>
-        <div className="flex h-60 items-center justify-center">
+        strength={600}>
+        <div className="flex h-80 items-center justify-center">
           <div className="absolute space-y-4 text-center">
             <h2 className="font-logo text-4xl font-medium text-white">Cook with the best Chef's</h2>
             <a

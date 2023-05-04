@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
           <div className="mt-6">
             <p className="font-semibold text-gray-100">Get the app</p>
-            <div className="mt-3 flex items-center gap-3 sm:block">
+            <div className="mt-3 flex flex-wrap items-center gap-3 sm:block">
               <a href="#">
                 <svg
                   className="w-32"

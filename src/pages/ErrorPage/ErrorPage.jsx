@@ -22,7 +22,7 @@ const ErrorPage = () => {
             </p>
             <Link
               to={'/'}
-              className="block rounded-lg bg-primary px-4 py-3 text-center font-medium text-white shadow hover:bg-primary-light md:inline">
+              className="block rounded-lg bg-primary px-4 py-3 text-center font-medium text-white shadow hover:bg-green-800 md:inline">
               Go Home
             </Link>
           </div>

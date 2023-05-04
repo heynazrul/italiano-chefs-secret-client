@@ -28,11 +28,12 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        
+        setError(error.message);
         let err = error.message.includes('wrong-password');
         if (err) {
           setError('Wrong Password');
         }
-        // setError(error.message);
       });
   };
 
@@ -69,11 +70,11 @@ const Login = () => {
         <div className="w-full max-w-sm space-y-8 text-gray-600">
           <div className="mt-5 space-y-2 text-center">
             <h3 className="text-2xl font-bold text-gray-800 sm:text-3xl">Log in to your account</h3>
-            <p className="">
+            <p>
               Don't have an account?{' '}
               <Link
                 to={'/register'}
-                className="font-medium text-primary hover:text-rose-600">
+                className="font-medium text-secondary hover:text-primary">
                 Sign up
               </Link>
             </p>
@@ -83,7 +84,9 @@ const Login = () => {
             onSubmit={handleLogIn}
             className="space-y-5">
             <div>
-              <label className="font-medium">Email</label>
+              <label className="font-medium">
+                Email <span className="text-red-600">*</span>
+              </label>
               <input
                 type="email"
                 name="email"
@@ -93,7 +96,9 @@ const Login = () => {
             </div>
 
             <div>
-              <label className="font-medium">Password</label>
+              <label className="font-medium">
+                Password <span className="text-red-600">*</span>
+              </label>
               <input
                 type="password"
                 name="password"
@@ -108,7 +113,7 @@ const Login = () => {
               )}
             </div>
 
-            <button className="mt-4 w-full rounded-lg bg-primary px-4 py-2 font-medium text-white duration-150 hover:bg-primary-light active:bg-rose-700">
+            <button className="mt-4 w-full rounded-lg bg-green-900 px-4 py-2 font-medium text-white duration-150 hover:bg-green-800 active:bg-green-800">
               Sign in
             </button>
           </form>
