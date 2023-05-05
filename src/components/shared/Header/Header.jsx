@@ -97,24 +97,26 @@ const Header = () => {
               <div className="items-center gap-x-6 space-y-3 md:flex md:space-y-0">
                 {/* {user && <FaUserCircle className="text-3xl"></FaUserCircle>} */}
                 {user && (
-                  <div className="group relative flex justify-center">
-                    <button className="rounded-full shadow-sm">
-                      {user.photoURL ? (
-                        <img
-                          className="h-12 rounded-full"
-                          src={user.photoURL}
-                          alt=""
-                        />
-                      ) : (
-                        <FaUserCircle className="text-3xl"></FaUserCircle>
+                  <Link to={'/profile'}>
+                    <div className="group relative flex justify-center">
+                      <button className="rounded-full shadow-sm">
+                        {user.photoURL ? (
+                          <img
+                            className="h-12 rounded-full"
+                            src={user.photoURL}
+                            alt=""
+                          />
+                        ) : (
+                          <FaUserCircle className="text-3xl"></FaUserCircle>
+                        )}
+                      </button>
+                      {user.displayName && (
+                        <span className="absolute top-12 scale-0 rounded bg-gray-800 p-2 text-xs text-white transition-all group-hover:scale-100">
+                          {user.displayName}
+                        </span>
                       )}
-                    </button>
-                    {user.displayName && (
-                      <span className="absolute top-12 scale-0 rounded bg-gray-800 p-2 text-xs text-white transition-all group-hover:scale-100">
-                        {user.displayName}
-                      </span>
-                    )}
-                  </div>
+                    </div>
+                  </Link>
                 )}
                 {user ? (
                   <Link
