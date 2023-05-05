@@ -2,7 +2,9 @@
 import React from 'react';
 import { AiFillLike, AiOutlineArrowRight } from 'react-icons/ai';
 import { GiHotMeal } from 'react-icons/gi';
-import LazyLoad from 'react-lazy-load';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 import { Link } from 'react-router-dom';
 
 const ChefDetails = ({ chefDetails }) => {
@@ -10,18 +12,14 @@ const ChefDetails = ({ chefDetails }) => {
 
   return (
     <section className="flex flex-col items-center justify-center rounded-md border text-center shadow hover:bg-primary-light">
-      <div className="h-60 w-full sm:h-52 md:h-56">
-        <LazyLoad
-          className="LazyLoad is-visible "
-          height={'100%'}
-          width={`100%`}
-          threshold={0.95}>
-          <img
-            src={chef_picture}
-            className="h-full w-full rounded-t-md object-cover object-center shadow-md"
-            alt=""
-          />
-        </LazyLoad>
+      <div className="h-fit w-full ">
+        <LazyLoadImage
+          className=" rounded-t-md object-cover object-center shadow-md "
+          effect="blur"
+          src={chef_picture}
+          placeholderSrc={chef_picture}
+          threshold={50}
+        />
       </div>
       {/* <div className="mx-auto h-24 w-24">
         <img
