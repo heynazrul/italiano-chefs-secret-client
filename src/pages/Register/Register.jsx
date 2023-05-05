@@ -2,14 +2,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { RotatingLines } from 'react-loader-spinner';
 
 const Register = () => {
-  const { createUser, updateUser, isImage, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+  const { createUser, updateUser, isImage, signInWithGoogle, signInWithGithub, logOut, signIn } =
+    useContext(AuthContext);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleRegister = (event) => {
     event.preventDefault();
+    setIsLoading(true);
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -17,28 +22,33 @@ const Register = () => {
     const photo = form.photo.value;
     if (password && password.length < 6) {
       setError('Password should be minimum 6 character');
+      setIsLoading(false);
       return;
     }
 
     if (photo && !isImage(photo)) {
       setError('Provide a valid photo URL ex: .jpg, .png, .svg');
+      setIsLoading(false);
       return;
     }
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
         updateUser(name, photo);
+        logOut();
+        signIn(email, password);
+        setIsLoading(false);
         toast.success('Registration Successful!');
         navigate('/');
       })
       .catch((error) => {
+        setIsLoading(false);
         let err = error.message.includes('email-already-in-use');
         if (err) {
           setError('Email already in use');
         }
         console.log(error);
       });
- 
   };
 
   const handleGoogleLogin = () => {
@@ -135,9 +145,15 @@ const Register = () => {
             </div>
             {/* Error message section */}
             {/* <div className="bg-rose-400 px-4 py-2">{error && toast.error(error)}</div> */}
-            <button className="mt-4 w-full rounded-lg bg-green-800 px-4 py-2 font-medium text-white duration-150 hover:bg-green-900  active:bg-green-800">
-              Create account
-            </button>
+            <div className="text-center">
+              <button className="mt-4 w-full rounded-lg bg-green-800 px-4 py-2 font-medium text-white duration-150 hover:bg-green-900  active:bg-green-800">
+                {isLoading ? (
+                  <div className="mx-auto h-6 w-6 animate-spin rounded-full border-4 border-dashed border-white"></div>
+                ) : (
+                  'Create Account'
+                )}
+              </button>
+            </div>
           </form>
           <div className="mt-5 space-y-4">
             <button
